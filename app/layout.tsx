@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://providebit.es"),
   title: "Providebit | Asociación Cultural",
   description: "Providebit acoge, respalda y da cobertura a proyectos católicos de difusión del Evangelio.",
   icons: { icon: "/favicon.png" },
