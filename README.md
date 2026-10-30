@@ -1,49 +1,34 @@
 # providebit.es
 
-Sitio web de la Asociación Providebit, construido con [vinext](https://github.com/cloudflare/vinext) (Next.js sobre Cloudflare Workers).
-
-## Tecnología
-
-- **Framework**: Next.js 19 (React Server Components) vía vinext
-- **Runtime**: Cloudflare Workers
-- **Estilos**: Tailwind CSS 4
-- **Base de datos**: Cloudflare D1 + Drizzle ORM (opcional)
-- **TypeScript**: sí
+Sitio web de la Asociación Cultural Providebit, construido con [Next.js](https://nextjs.org) y publicado como web estática en GitHub Pages.
 
 ## Estructura
 
 ```
-app/                  # Páginas y componentes de la aplicación
-  components/         # Componentes reutilizables (footer, cookies, páginas legales)
+app/                  # Páginas y componentes de la web
+  components/         # Componentes reutilizables (pie de página, cookies, páginas legales)
   aviso-legal/        # Aviso legal
   politica-cookies/   # Política de cookies
   politica-privacidad/# Política de privacidad
   contacto/           # Formulario de contacto
   junta-directiva/    # Página de la junta directiva
-public/               # Imágenes y recursos estáticos
-db/                   # Esquema de base de datos (Drizzle)
-worker/               # Entry point del Worker de Cloudflare
+public/               # Imágenes y recursos estáticos (incluye CNAME con el dominio)
+.github/workflows/    # Publicación automática en GitHub Pages
 ```
 
-## Desarrollo local
+## Publicación
 
-**Requisitos**: Node.js `>=22.13.0`
+Cada vez que se suben cambios a la rama `main`, GitHub Actions compila la web
+(`npm run build`, que genera la carpeta `out/`) y la publica en GitHub Pages,
+servida en https://providebit.es.
 
-```bash
-npm install
-npm run dev
-```
+## Desarrollo local (opcional)
 
-## Comandos
+Requisitos: Node.js 22 o superior.
 
-| Comando | Descripción |
-|---------|-------------|
-| `npm run dev` | Servidor de desarrollo local |
-| `npm run build` | Compilar para producción |
-| `npm run lint` | Linting con ESLint |
-| `npm test` | Build + tests de HTML renderizado |
-| `npm run db:generate` | Generar migraciones Drizzle |
-
-## Despliegue
-
-El sitio está configurado para desplegar en Cloudflare Workers (compatible también con GPT Sites).
+| Comando         | Descripción                                          |
+|-----------------|------------------------------------------------------|
+| `npm install`   | Instala las dependencias                             |
+| `npm run dev`   | Vista previa en http://localhost:3000                |
+| `npm run build` | Genera la web estática en `out/`                     |
+| `npm start`     | Sirve la carpeta `out/` para revisarla               |
