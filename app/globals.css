@@ -27,3 +27,4 @@
 
 /* Junta directiva: columnas de igual ancho para que las fotos midan lo mismo */
 .boardGrid{column-gap:48px}.boardMember,.boardMember:not(:first-child),.boardMember:last-child{position:relative;padding:28px 0 8px;border-right:0}.boardMember:not(:last-child)::after{content:"";position:absolute;top:0;bottom:0;right:-24px;border-right:1px solid var(--line)}@media(max-width:800px){.boardGrid{row-gap:0}.boardMember:nth-child(2)::after{display:none}}@media(max-width:500px){.boardMember::after{display:none}.boardMember,.boardMember:not(:first-child),.boardMember:last-child{padding:22px 0}.boardPhoto{max-width:320px}}
+.boardLinkedin{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;margin-top:14px;border:1px solid var(--line);border-radius:50%;color:var(--pine);transition:background .2s,color .2s,border-color .2s}.boardLinkedin:hover,.boardLinkedin:focus-visible{background:var(--pine);border-color:var(--pine);color:#fff}
