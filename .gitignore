@@ -42,3 +42,6 @@ yarn-error.log*
 
 # GPT Sites platform config (contains private project IDs)
 .openai/
+
+# typescript
+*.tsbuildinfo
