@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 type Props = { home?: boolean; className?: string };
@@ -23,13 +24,13 @@ export function SiteNav({ home = false, className = "" }: Props) {
   }, [open]);
 
   return <nav className={`nav ${className} ${open ? "navOpen" : ""}`.trim()} aria-label="Navegación principal">
-    <a href="/" className="brand" aria-label="Providebit, inicio"><img src="/logo.png" alt="Providebit" /></a>
+    <Link href="/" className="brand" aria-label="Providebit, inicio"><img src="/logo.png" alt="Providebit" /></Link>
     <button type="button" className="navToggle" aria-expanded={open} aria-controls="menu-principal" aria-label={open ? "Cerrar menú" : "Abrir menú"} onClick={() => setOpen(!open)}>
       <span /><span /><span />
     </button>
-    <div className="navLinks" id="menu-principal" onClick={(event) => { if ((event.target as HTMLElement).closest("a")) setOpen(false); }}>
-      {links.map((link) => <a key={link.href} href={link.href}>{link.label}</a>)}
-      <a href="/contacto" className="navCta">Contactar</a>
+    <div className="navLinks" id="menu-principal">
+      {links.map((link) => <Link key={link.href} href={link.href} onClick={() => setOpen(false)}>{link.label}</Link>)}
+      <Link href="/contacto" className="navCta" onClick={() => setOpen(false)}>Contactar</Link>
     </div>
   </nav>;
 }
