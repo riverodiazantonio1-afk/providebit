@@ -5,16 +5,27 @@ Sitio web de la Asociación Cultural Providebit, construido con [Next.js](https:
 ## Estructura
 
 ```
-app/                  # Páginas y componentes de la web
-  components/         # Componentes reutilizables (pie de página, cookies, páginas legales)
-  aviso-legal/        # Aviso legal
-  politica-cookies/   # Política de cookies
-  politica-privacidad/# Política de privacidad
-  contacto/           # Formulario de contacto
-  junta-directiva/    # Página de la junta directiva
-public/               # Imágenes y recursos estáticos (incluye CNAME con el dominio)
-.github/workflows/    # Publicación automática en GitHub Pages
+app/
+  layout.tsx            # Estructura común: menú, pie de página y aviso de cookies
+  globals.css           # Estilos de toda la web, ordenados por secciones
+  page.tsx              # Página de inicio (los textos de proyectos y principios están al principio del archivo)
+  contacto/             # Página y formulario de contacto
+  junta-directiva/      # Página de la junta directiva (lista de miembros al principio del archivo)
+  aviso-legal/, politica-privacidad/, politica-cookies/   # Páginas legales
+  components/           # Piezas reutilizables (menú, pie, cookies, cabeceras, tarjeta de proyecto, iconos)
+  lib/
+    site.ts             # Datos de la asociación (correo, NIF, dirección) y enlaces del menú
+    legal.tsx           # Textos de las páginas legales
+public/                 # Imágenes y recursos estáticos (incluye CNAME con el dominio)
+.github/workflows/      # Publicación automática en GitHub Pages
 ```
+
+### Cambios habituales
+
+- **Correo, dirección o NIF**: `app/lib/site.ts` (se actualiza en toda la web).
+- **Añadir o editar un proyecto**: lista `projects` en `app/page.tsx`. Si el proyecto tiene web, añade `link` y la tarjeta enlazará a ella.
+- **Miembros de la junta**: lista `board` en `app/junta-directiva/page.tsx`.
+- **Textos legales**: `app/lib/legal.tsx`.
 
 ## Publicación
 

@@ -1,2 +1,5 @@
 import { LegalPage } from "../components/LegalPage";
-export default function Page() { return <LegalPage type="politica-privacidad" />; }
+
+export default function Page() {
+  return <LegalPage type="politica-privacidad" />;
+}

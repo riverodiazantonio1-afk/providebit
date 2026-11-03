@@ -1,2 +1,5 @@
 import { LegalPage } from "../components/LegalPage";
-export default function Page() { return <LegalPage type="aviso-legal" />; }
+
+export default function Page() {
+  return <LegalPage type="aviso-legal" />;
+}
