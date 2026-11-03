@@ -1,8 +1,10 @@
 import { CookieConsent } from "./components/CookieConsent";
 import { SiteFooter } from "./components/SiteFooter";
 
-const projects = [
-  { title: "Padres Católicos", description: "Contenidos, formación y experiencias para que los padres cultiven un hogar cristiano y una vida interior unida a Jesús.", image: "/images/padres.jpg" },
+type Project = { title: string; description: string; image: string; link?: { href: string; label: string } };
+
+const projects: Project[] = [
+  { title: "Padres Católicos", description: "Contenidos, formación y experiencias para que los padres cultiven un hogar cristiano y una vida interior unida a Jesús.", image: "/images/padres.jpg", link: { href: "https://padrescatolicos.substack.com", label: "Leer en Substack" } },
   { title: "Te receto un Santo", description: "Una iniciativa para acercar la vida de los santos de una manera cercana, actual y esperanzadora.", image: "/images/sociedad.jpg" },
   { title: "Bajo tu manto", description: "Objetos de piedad y devoción que acercan la fe a lo cotidiano y ayudan a compartirla con otros.", image: "/images/bajo-tu-manto.jpg" },
   { title: "Editorial Providebit", description: "Edición de obras que alimentan una vida cristiana profunda, comenzando por Don Dolindo Ruotolo.", image: "/images/lectura-formacion.jpg" },
@@ -43,7 +45,7 @@ export default function Home() {
 
     <section className="projects projectsFirst" id="proyectos">
       <div className="sectionHeading"><div><div className="sectionLabel">Curso 2026–2027</div><h2>Proyectos apostólicos en desarrollo.</h2></div><p>Cuatro iniciativas que queremos sacar adelante durante el próximo curso.</p></div>
-      <div className="projectGrid projectGridFour">{projects.map((project) => <article className="project" key={project.title}><img src={project.image} alt="" /><div className="projectBody"><span className="pill">En desarrollo</span><h3>{project.title}</h3><p>{project.description}</p></div></article>)}</div>
+      <div className="projectGrid projectGridFour">{projects.map((project) => <article className={project.link ? "project projectLinked" : "project"} key={project.title}>{project.link ? <a className="projectImage" href={project.link.href} target="_blank" rel="noopener noreferrer" tabIndex={-1} aria-hidden="true"><img src={project.image} alt="" /></a> : <img src={project.image} alt="" />}<div className="projectBody"><span className="pill">En desarrollo</span><h3>{project.title}</h3><p>{project.description}</p>{project.link && <a className="projectLink" href={project.link.href} target="_blank" rel="noopener noreferrer">{project.link.label}<span aria-hidden="true">→</span><small>{project.link.href.replace("https://", "")}</small></a>}</div></article>)}</div>
       <p className="projectNote">Bajo tu manto está promovido por uno de los socios de la asociación. Providebit lo acompaña respetando su identidad y su propósito propio.</p>
       <div className="projectsCta"><p>Si quieres ayudar a que alguno de estos proyectos dé su primer paso, puedes hacer una aportación.</p><a className="button buttonPrimary" href="#hacer-posible">Hacer una donación <span>→</span></a></div>
     </section>
