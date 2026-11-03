@@ -1,36 +1,49 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { navLinks } from "../lib/site";
 
-type Props = { home?: boolean; className?: string };
-
-export function SiteNav({ home = false, className = "" }: Props) {
+// Menú principal. En móviles se pliega en un botón de hamburguesa.
+export function SiteNav() {
   const [open, setOpen] = useState(false);
-  const prefix = home ? "" : "/";
-  const links = [
-    { href: `${prefix}#proyectos`, label: "Proyectos" },
-    { href: `${prefix}#asociacion`, label: "La asociación" },
-    { href: "/junta-directiva", label: "Junta directiva" },
-  ];
+  const isHome = usePathname() === "/";
+  const close = () => setOpen(false);
 
+  // Cierra el menú con la tecla Escape.
   useEffect(() => {
     if (!open) return;
-    const onKey = (event: KeyboardEvent) => { if (event.key === "Escape") setOpen(false); };
-    const onResize = () => { if (window.innerWidth > 760) setOpen(false); };
+    const onKey = (event: KeyboardEvent) => event.key === "Escape" && setOpen(false);
     window.addEventListener("keydown", onKey);
-    window.addEventListener("resize", onResize);
-    return () => { window.removeEventListener("keydown", onKey); window.removeEventListener("resize", onResize); };
+    return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
-  return <nav className={`nav ${className} ${open ? "navOpen" : ""}`.trim()} aria-label="Navegación principal">
-    <Link href="/" className="brand" aria-label="Providebit, inicio"><img src="/logo.png" alt="Providebit" /></Link>
-    <button type="button" className="navToggle" aria-expanded={open} aria-controls="menu-principal" aria-label={open ? "Cerrar menú" : "Abrir menú"} onClick={() => setOpen(!open)}>
-      <span /><span /><span />
-    </button>
-    <div className="navLinks" id="menu-principal">
-      {links.map((link) => <Link key={link.href} href={link.href} onClick={() => setOpen(false)}>{link.label}</Link>)}
-      <Link href="/contacto" className="navCta" onClick={() => setOpen(false)}>Contactar</Link>
-    </div>
-  </nav>;
+  const classes = ["nav", !isHome && "navBordered", open && "navOpen"].filter(Boolean).join(" ");
+
+  return (
+    <nav className={classes} aria-label="Navegación principal">
+      <Link href="/" className="brand" aria-label="Providebit, inicio" onClick={close}>
+        <img src="/logo.png" alt="Providebit" />
+      </Link>
+
+      <button
+        type="button"
+        className="navToggle"
+        aria-expanded={open}
+        aria-controls="menu-principal"
+        aria-label={open ? "Cerrar menú" : "Abrir menú"}
+        onClick={() => setOpen(!open)}
+      >
+        <span /><span /><span />
+      </button>
+
+      <div className="navLinks" id="menu-principal">
+        {navLinks.map((link) => (
+          <Link key={link.href} href={link.href} onClick={close}>{link.label}</Link>
+        ))}
+        <Link href="/contacto" className="navCta" onClick={close}>Contactar</Link>
+      </div>
+    </nav>
+  );
 }

@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { CookieConsent } from "./components/CookieConsent";
+import { SiteFooter } from "./components/SiteFooter";
+import { SiteNav } from "./components/SiteNav";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -15,6 +18,16 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title: "Providebit", description: "Proyectos que echan raíces.", images: ["/og.png"] },
 };
 
+// Estructura común a todas las páginas: menú, contenido, pie y aviso de cookies.
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="es"><body>{children}</body></html>;
+  return (
+    <html lang="es">
+      <body>
+        <SiteNav />
+        {children}
+        <SiteFooter />
+        <CookieConsent />
+      </body>
+    </html>
+  );
 }
