@@ -126,10 +126,12 @@ h3 { font: 500 24px/1.2 var(--display); margin: 36px 0 12px; }
 .project h3 { margin: 22px 0 12px; }
 .project p { flex: 1; font-size: 15px; color: var(--muted); }
 
-.pill,
-.substackBadge { align-self: flex-start; padding: 5px 9px; font-size: 10px; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; }
+.badge { align-self: flex-start; padding: 5px 9px; font-size: 10px; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; }
 .pill { color: var(--clay); background: #f1e8dc; }
-.substackBadge { display: inline-flex; align-items: center; gap: 7px; padding: 6px 11px; color: #fff; background: #ff6719; transition: background .2s ease; }
+.substackBadge,
+.webBadge { display: inline-flex; align-items: center; gap: 7px; padding: 6px 11px; color: #fff; transition: background .2s ease; }
+.substackBadge { background: #ff6719; }
+.webBadge { background: var(--pine); }
 
 /* Tarjeta con enlace: el enlace del título se estira para cubrir toda la tarjeta */
 .projectLinked { position: relative; transition: box-shadow .25s ease, transform .25s ease; }
@@ -143,6 +145,7 @@ h3 { font: 500 24px/1.2 var(--display); margin: 36px 0 12px; }
 .projectLinked:hover img { transform: scale(1.04); }
 .projectLinked:hover h3 a { color: var(--clay); }
 .projectLinked:hover .substackBadge { background: #e5550a; }
+.projectLinked:hover .webBadge { background: var(--moss); }
 .projectLinked:hover .projectMore span { transform: translateX(4px); }
 
 .projectNote { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 14px; color: #555c54; }

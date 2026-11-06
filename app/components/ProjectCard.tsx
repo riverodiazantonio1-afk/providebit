@@ -1,4 +1,4 @@
-import { SubstackIcon } from "./icons";
+import { GlobeIcon, SubstackIcon } from "./icons";
 
 export type Project = {
   title: string;
@@ -7,8 +7,15 @@ export type Project = {
   /** Encuadre de la foto, si el centro no es la mejor parte (p. ej. "center 42%"). */
   imagePosition?: string;
   /** Si el proyecto ya tiene web, toda la tarjeta enlaza a ella. */
-  link?: { href: string; label: string };
+  link?: { href: string; label: string; platform: "substack" | "web" };
 };
+
+/** Distintivo de la tarjeta según dónde se publique el proyecto. */
+function Badge({ platform }: { platform?: "substack" | "web" }) {
+  if (platform === "substack") return <span className="badge substackBadge"><SubstackIcon /> En Substack</span>;
+  if (platform === "web") return <span className="badge webBadge"><GlobeIcon /> Sitio web</span>;
+  return <span className="badge pill">En desarrollo</span>;
+}
 
 export function ProjectCard({ title, description, image, imagePosition, link }: Project) {
   return (
@@ -18,11 +25,7 @@ export function ProjectCard({ title, description, image, imagePosition, link }: 
       </div>
 
       <div className="projectBody">
-        {link ? (
-          <span className="substackBadge"><SubstackIcon /> En Substack</span>
-        ) : (
-          <span className="pill">En desarrollo</span>
-        )}
+        <Badge platform={link?.platform} />
 
         {/* En las tarjetas con enlace, el enlace del título cubre toda la tarjeta (ver CSS). */}
         <h3>{link ? <a href={link.href} target="_blank" rel="noopener noreferrer">{title}</a> : title}</h3>
