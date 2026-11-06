@@ -1,12 +1,13 @@
 /* ==========================================================================
-   Fuente de la marca: Archivo (variable, servida desde /public/fonts)
-   Un solo archivo cubre todos los pesos (100–900) y anchuras (62–125 %).
-   Los títulos usan la anchura estrecha; los textos, la normal.
+   Fuente de la marca: Archivo (servida desde /public/fonts)
+   Cada archivo cubre todos los pesos (100–900). «Archivo Condensed» es la
+   misma familia a 75 % de anchura, para titulares.
    Licencia SIL OFL 1.1: /public/fonts/Archivo-OFL.txt
    ========================================================================== */
 
-@font-face { font-family: "Archivo"; src: url("/fonts/Archivo-wdth-wght.woff2") format("woff2"); font-weight: 100 900; font-stretch: 62% 125%; font-style: normal; font-display: swap; }
-@font-face { font-family: "Archivo"; src: url("/fonts/Archivo-wdth-wght-italic.woff2") format("woff2"); font-weight: 100 900; font-stretch: 62% 125%; font-style: italic; font-display: swap; }
+@font-face { font-family: "Archivo"; src: url("/fonts/Archivo.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Archivo"; src: url("/fonts/Archivo-Italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
+@font-face { font-family: "Archivo Condensed"; src: url("/fonts/ArchivoCondensed.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
 
 /* ==========================================================================
    Variables: tokens del sistema de diseño de Providebit
@@ -31,10 +32,7 @@
 
   /* Tipografía: una sola familia, Archivo. La jerarquía la marcan anchura y peso */
   --font-sans: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-display: var(--font-sans);
-  --stretch-display: 75%;    /* Títulos h1/h2: estrecha (condensed) */
-  --stretch-heading: 87.5%;  /* h3 y nombres de tarjeta: semiestrecha */
-  --stretch-text: 100%;      /* Textos: anchura normal */
+  --font-display: "Archivo Condensed", "Arial Narrow", "Roboto Condensed", var(--font-sans); /* h1, h2 */
 
   /* Escala tipográfica (tamaño / interlineado / peso) */
   --text-caption: 0.8125rem; /* 13 px · 1.45 · 400 */
@@ -80,11 +78,11 @@ strong { font-weight: 600; }
 h1, h2, h3, p { margin: 0; }
 
 /* Titulares de marca: Archivo estrecha, peso semibold e interletraje ceñido */
-h1, h2 { font-family: var(--font-display); font-stretch: var(--stretch-display); font-weight: 600; letter-spacing: -.01em; text-wrap: balance; }
+h1, h2 { font-family: var(--font-display); font-weight: 600; letter-spacing: -.01em; text-wrap: balance; }
 h1 { font-size: clamp(42px, 6vw, 80px); line-height: 1.02; }
 h2 { font-size: clamp(30px, 3.8vw, 50px); line-height: 1.08; }
 /* Titulares medios y nombres de tarjeta: Archivo semiestrecha */
-h3 { font: 600 var(--text-heading)/1.25 var(--font-sans); font-stretch: var(--stretch-heading); letter-spacing: -.005em; margin: 36px 0 12px; text-wrap: balance; }
+h3 { font: 600 var(--text-heading)/1.25 var(--font-sans); letter-spacing: -.01em; margin: 36px 0 12px; text-wrap: balance; }
 p { text-wrap: pretty; }
 
 /* Foco de teclado: anillo de 2 px en brown con 2 px de separación */
@@ -241,7 +239,7 @@ blockquote cite { display: block; margin-top: var(--space-3); color: var(--brown
 .principle h3 { margin: 0 0 4px; font-size: clamp(24px, 2.4vw, 32px); line-height: 1.15; }
 .principle p { color: var(--ink-muted); font-size: 15px; line-height: 1.55; }
 /* Sello circular: radius-round es el radio del sello en la marca */
-.principleMark { display: grid; place-items: center; width: 70px; height: 70px; padding: 7px; border: 1px solid var(--gold); border-radius: var(--radius-round); color: var(--brown); font: 500 13px/1.1 var(--font-sans); font-stretch: var(--stretch-display); text-align: center; white-space: nowrap; }
+.principleMark { display: grid; place-items: center; width: 70px; height: 70px; padding: 7px; border: 1px solid var(--gold); border-radius: var(--radius-round); color: var(--brown); font: 500 13px/1.1 var(--font-display); text-align: center; white-space: nowrap; }
 
 @media (max-width: 800px) {
   .principlesIntro { grid-template-columns: 1fr; gap: 15px; }
@@ -323,7 +321,7 @@ blockquote cite { display: block; margin-top: var(--space-3); color: var(--brown
 /* Página de agradecimiento por donación */
 .thanksNote { padding-block: clamp(56px, 7vw, 90px); padding-inline: var(--gutter-wide); }
 .thanksNote .lead { max-width: 640px; font-style: italic; }
-.thanksSignature { font: 600 24px/1.2 var(--font-display); font-stretch: var(--stretch-display); letter-spacing: -.005em; }
+.thanksSignature { font: 600 24px/1.2 var(--font-display); letter-spacing: -.005em; }
 .thanksSignature span { display: block; margin-top: 6px; color: var(--brown); font: 400 12px var(--font-sans); letter-spacing: .1em; text-transform: uppercase; }
 .thanksSteps { background: var(--cream-light); border-block: 1px solid var(--gray-light); }
 .thanksFollow { display: grid; grid-template-columns: minmax(280px, 1fr) minmax(300px, .9fr); gap: clamp(40px, 8vw, 120px); align-items: end; }

@@ -18,7 +18,7 @@ app/
     legal.tsx           # Textos de las páginas legales
 public/                 # Imágenes y recursos estáticos (incluye CNAME con el dominio)
   brand/                # Logos oficiales en SVG (del sistema de diseño)
-  fonts/                # Fuente de la marca: Archivo variable (pesos y anchuras en un archivo)
+  fonts/                # Fuente de la marca: Archivo (normal, cursiva y Condensed para titulares)
 .github/workflows/      # Publicación automática en GitHub Pages
 ```
 
