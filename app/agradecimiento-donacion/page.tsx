@@ -40,6 +40,14 @@ export default function AgradecimientoDonacion() {
         text="Tu aportación ayuda a que los proyectos que acompaña Providebit den su primer paso. Que Dios te lo pague."
       />
 
+      <section className="section thanksNote">
+        <p className="lead">Encomendamos tus intenciones en nuestra oración.</p>
+        <p className="thanksSignature">
+          Antonio Rivero Díaz
+          <span>Presidente de la Asociación Cultural Providebit</span>
+        </p>
+      </section>
+
       <section className="section thanksSteps">
         <p className="sectionLabel">Y ahora</p>
         <div className="serviceGrid">
