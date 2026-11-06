@@ -1,13 +1,15 @@
 /* ==========================================================================
-   Fuente de la marca: Archivo (servida desde /public/fonts)
-   Cada archivo cubre todos los pesos (100–900). «Archivo Condensed» es la
-   misma familia a 75 % de anchura, para titulares.
-   Licencia SIL OFL 1.1: /public/fonts/Archivo-OFL.txt
+   Fuente de la marca: Commissioner (servida desde /public/fonts)
+   Sin serifa con los trazos ensanchados en los extremos («flare»).
+   Cada archivo cubre todos los pesos (100–900):
+   - «Commissioner Flared»: remate máximo, para titulares.
+   - «Commissioner»: remate suave (30 %), para textos; la cursiva es su versión inclinada.
+   Licencia SIL OFL 1.1: /public/fonts/Commissioner-OFL.txt
    ========================================================================== */
 
-@font-face { font-family: "Archivo"; src: url("/fonts/Archivo.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
-@font-face { font-family: "Archivo"; src: url("/fonts/Archivo-Italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
-@font-face { font-family: "Archivo Condensed"; src: url("/fonts/ArchivoCondensed.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Commissioner"; src: url("/fonts/Commissioner.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Commissioner"; src: url("/fonts/Commissioner-Italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
+@font-face { font-family: "Commissioner Flared"; src: url("/fonts/CommissionerFlared.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
 
 /* ==========================================================================
    Variables: tokens del sistema de diseño de Providebit
@@ -30,9 +32,9 @@
   --cream-light: #FDFAF5;    /* Tarjetas y paneles sobre cream */
   --rule: rgba(139, 94, 64, .25);
 
-  /* Tipografía: una sola familia, Archivo. La jerarquía la marcan anchura y peso */
-  --font-sans: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-display: "Archivo Condensed", "Arial Narrow", "Roboto Condensed", var(--font-sans); /* h1, h2 */
+  /* Tipografía: una sola familia, Commissioner. Titulares con remate máximo, textos con remate suave */
+  --font-sans: "Commissioner", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Commissioner Flared", Optima, Candara, var(--font-sans); /* h1, h2, h3 */
 
   /* Escala tipográfica (tamaño / interlineado / peso) */
   --text-caption: 0.8125rem; /* 13 px · 1.45 · 400 */
@@ -77,12 +79,12 @@ a { color: inherit; }
 strong { font-weight: 600; }
 h1, h2, h3, p { margin: 0; }
 
-/* Titulares de marca: Archivo estrecha, peso semibold e interletraje ceñido */
-h1, h2 { font-family: var(--font-display); font-weight: 600; letter-spacing: -.01em; text-wrap: balance; }
-h1 { font-size: clamp(42px, 6vw, 80px); line-height: 1.02; }
-h2 { font-size: clamp(30px, 3.8vw, 50px); line-height: 1.08; }
-/* Titulares medios y nombres de tarjeta: Archivo semiestrecha */
-h3 { font: 600 var(--text-heading)/1.25 var(--font-sans); letter-spacing: -.01em; margin: 36px 0 12px; text-wrap: balance; }
+/* Titulares de marca: Commissioner Flared en peso regular, interletraje ceñido */
+h1, h2 { font-family: var(--font-display); font-weight: 400; letter-spacing: -.005em; text-wrap: balance; }
+h1 { font-size: clamp(38px, 5.4vw, 72px); line-height: 1.06; }
+h2 { font-size: clamp(28px, 3.4vw, 44px); line-height: 1.12; }
+/* Titulares medios y nombres de tarjeta: Commissioner Flared medio */
+h3 { font: 500 var(--text-heading)/1.25 var(--font-display); letter-spacing: -.005em; margin: 36px 0 12px; text-wrap: balance; }
 p { text-wrap: pretty; }
 
 /* Foco de teclado: anillo de 2 px en brown con 2 px de separación */
@@ -236,7 +238,7 @@ blockquote cite { display: block; margin-top: var(--space-3); color: var(--brown
 .principleList { border-top: 1px solid var(--rule); }
 .principle { display: grid; grid-template-columns: 60px minmax(250px, 1fr) 110px; gap: var(--space-6); align-items: center; padding: var(--space-6) 0; border-bottom: 1px solid var(--rule); }
 .principle > span { color: var(--brown); font-size: 12px; font-weight: 500; letter-spacing: .1em; }
-.principle h3 { margin: 0 0 4px; font-size: clamp(24px, 2.4vw, 32px); line-height: 1.15; }
+.principle h3 { margin: 0 0 4px; font-size: clamp(22px, 2.2vw, 28px); line-height: 1.2; }
 .principle p { color: var(--ink-muted); font-size: 15px; line-height: 1.55; }
 /* Sello circular: radius-round es el radio del sello en la marca */
 .principleMark { display: grid; place-items: center; width: 70px; height: 70px; padding: 7px; border: 1px solid var(--gold); border-radius: var(--radius-round); color: var(--brown); font: 500 13px/1.1 var(--font-display); text-align: center; white-space: nowrap; }
@@ -258,7 +260,7 @@ blockquote cite { display: block; margin-top: var(--space-3); color: var(--brown
 .missionGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-top: 55px; }
 .missionGrid article { padding-top: var(--space-5); border-top: 1px solid rgba(212, 176, 122, .4); }
 .missionGrid span { color: var(--gold-light); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
-.missionGrid h2 { margin: var(--space-6) 0 var(--space-4); font-size: clamp(30px, 3.4vw, 44px); }
+.missionGrid h2 { margin: var(--space-6) 0 var(--space-4); font-size: clamp(28px, 3vw, 38px); }
 .missionGrid p { max-width: 430px; color: var(--cream); }
 
 @media (max-width: 800px) {
@@ -321,7 +323,7 @@ blockquote cite { display: block; margin-top: var(--space-3); color: var(--brown
 /* Página de agradecimiento por donación */
 .thanksNote { padding-block: clamp(56px, 7vw, 90px); padding-inline: var(--gutter-wide); }
 .thanksNote .lead { max-width: 640px; font-style: italic; }
-.thanksSignature { font: 600 24px/1.2 var(--font-display); letter-spacing: -.005em; }
+.thanksSignature { font: 500 24px/1.2 var(--font-display); letter-spacing: -.005em; }
 .thanksSignature span { display: block; margin-top: 6px; color: var(--brown); font: 400 12px var(--font-sans); letter-spacing: .1em; text-transform: uppercase; }
 .thanksSteps { background: var(--cream-light); border-block: 1px solid var(--gray-light); }
 .thanksFollow { display: grid; grid-template-columns: minmax(280px, 1fr) minmax(300px, .9fr); gap: clamp(40px, 8vw, 120px); align-items: end; }
@@ -336,12 +338,12 @@ blockquote cite { display: block; margin-top: var(--space-3); color: var(--brown
 .pageHeader { padding: clamp(var(--space-9), 11vw, 150px) var(--gutter-wide); background: var(--ink-dark); color: var(--cream); }
 .pageHeader > * { max-width: 780px; }
 .pageHeader .sectionLabel { color: var(--gold-light); }
-.pageHeader h1 { font-size: clamp(40px, 5.4vw, 72px); }
+.pageHeader h1 { font-size: clamp(36px, 4.8vw, 60px); }
 .pageHeaderText { margin-top: var(--space-6); max-width: 590px; color: var(--cream); font: 400 var(--text-lead)/1.5 var(--font-sans); }
 
 /* Contacto */
 .contactContent { display: grid; grid-template-columns: minmax(260px, .78fr) minmax(360px, 1fr); gap: clamp(45px, 11vw, 150px); padding: clamp(var(--space-9), 11vw, 140px) var(--gutter-wide); }
-.contactAside h2 { font-size: clamp(30px, 3.4vw, 44px); }
+.contactAside h2 { font-size: clamp(28px, 3vw, 38px); }
 .contactAside p { margin-top: 18px; color: var(--ink-muted); }
 .contactAside a { color: var(--brown); }
 .contactForm { display: grid; gap: 22px; }
