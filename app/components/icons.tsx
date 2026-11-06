@@ -17,3 +17,12 @@ export function SubstackIcon({ size = 11 }: IconProps) {
     </svg>
   );
 }
+
+export function GlobeIcon({ size = 11 }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true" focusable="false" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M2 12h20M12 2c2.8 3 4.2 6.3 4.2 10S14.8 19 12 22c-2.8-3-4.2-6.3-4.2-10S9.2 5 12 2z" />
+    </svg>
+  );
+}

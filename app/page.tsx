@@ -6,12 +6,13 @@ const projects: Project[] = [
     title: "Padres Católicos",
     description: "Contenidos, formación y experiencias para que los padres cultiven un hogar cristiano y una vida interior unida a Jesús.",
     image: "/images/padres.jpg",
-    link: { href: "https://padrescatolicos.substack.com", label: "Leer Padres Católicos" },
+    link: { href: "https://padrescatolicos.substack.com", label: "Leer Padres Católicos", platform: "substack" },
   },
   {
     title: "Te receto un Santo",
     description: "Una iniciativa para acercar la vida de los santos de una manera cercana, actual y esperanzadora.",
     image: "/images/sociedad.jpg",
+    link: { href: "https://terecetounsanto.com/", label: "Visitar Te receto un Santo", platform: "web" },
   },
   {
     title: "Bajo tu manto",
