@@ -18,7 +18,7 @@ app/
     legal.tsx           # Textos de las páginas legales
 public/                 # Imágenes y recursos estáticos (incluye CNAME con el dominio)
   brand/                # Logos oficiales en SVG (del sistema de diseño)
-  fonts/                # Fuentes de la marca: Cormorant SC, Cormorant Garamond y DM Sans
+  fonts/                # Fuente de la marca: Commissioner (texto, cursiva y Flared para titulares)
 .github/workflows/      # Publicación automática en GitHub Pages
 ```
 

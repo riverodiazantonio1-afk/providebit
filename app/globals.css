@@ -1,15 +1,15 @@
 /* ==========================================================================
-   Fuentes de la marca (servidas desde /public/fonts, sin depender de Google)
+   Fuente de la marca: Commissioner (servida desde /public/fonts)
+   Sin serifa con los trazos ensanchados en los extremos («flare»).
+   Cada archivo cubre todos los pesos (100–900):
+   - «Commissioner Flared»: remate máximo, para titulares.
+   - «Commissioner»: remate suave (30 %), para textos; la cursiva es su versión inclinada.
+   Licencia SIL OFL 1.1: /public/fonts/Commissioner-OFL.txt
    ========================================================================== */
 
-@font-face { font-family: "Cormorant SC"; src: url("/fonts/CormorantSC-500.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
-@font-face { font-family: "Cormorant Garamond"; src: url("/fonts/CormorantGaramond-300.woff2") format("woff2"); font-weight: 300; font-style: normal; font-display: swap; }
-@font-face { font-family: "Cormorant Garamond"; src: url("/fonts/CormorantGaramond-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: "Cormorant Garamond"; src: url("/fonts/CormorantGaramond-500.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
-@font-face { font-family: "Cormorant Garamond"; src: url("/fonts/CormorantGaramond-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
-@font-face { font-family: "DM Sans"; src: url("/fonts/DMSans-300.woff2") format("woff2"); font-weight: 300; font-style: normal; font-display: swap; }
-@font-face { font-family: "DM Sans"; src: url("/fonts/DMSans-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: "DM Sans"; src: url("/fonts/DMSans-500.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Commissioner"; src: url("/fonts/Commissioner.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Commissioner"; src: url("/fonts/Commissioner-Italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
+@font-face { font-family: "Commissioner Flared"; src: url("/fonts/CommissionerFlared.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
 
 /* ==========================================================================
    Variables: tokens del sistema de diseño de Providebit
@@ -32,10 +32,16 @@
   --cream-light: #FDFAF5;    /* Tarjetas y paneles sobre cream */
   --rule: rgba(139, 94, 64, .25);
 
-  /* Tipografías */
-  --font-display: "Cormorant SC", Georgia, serif;
-  --font-serif: "Cormorant Garamond", Georgia, serif;
-  --font-sans: "DM Sans", system-ui, sans-serif;
+  /* Tipografía: una sola familia, Commissioner. Titulares con remate máximo, textos con remate suave */
+  --font-sans: "Commissioner", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Commissioner Flared", Optima, Candara, var(--font-sans); /* h1, h2, h3 */
+
+  /* Escala tipográfica (tamaño / interlineado / peso) */
+  --text-caption: 0.8125rem; /* 13 px · 1.45 · 400 */
+  --text-small: 0.9375rem;   /* 15 px · 1.55 · 400 */
+  --text-body: 1rem;         /* 16 px · 1.6  · 400 */
+  --text-lead: 1.25rem;      /* 20 px · 1.5  · 400 — entradillas y citas */
+  --text-heading: 1.375rem;  /* 22 px · 1.25 · 600 — h3 */
 
   /* Espaciado */
   --space-1: 4px;
@@ -67,17 +73,19 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--cream); color: var(--ink); font: 300 16px/1.7 var(--font-sans); }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body { margin: 0; background: var(--cream); color: var(--ink); font: 400 var(--text-body)/1.6 var(--font-sans); }
 a { color: inherit; }
-strong { font-weight: 500; }
+strong { font-weight: 600; }
 h1, h2, h3, p { margin: 0; }
 
-/* Titulares de marca: Cormorant SC en versalitas con tracking amplio */
-h1, h2 { font-family: var(--font-display); font-weight: 500; letter-spacing: .15em; }
-h1 { font-size: clamp(38px, 5vw, 64px); line-height: 1.12; }
-h2 { font-size: clamp(28px, 3.2vw, 42px); line-height: 1.2; }
-/* Titulares medios y nombres de tarjeta: Cormorant Garamond */
-h3 { font: 500 25px/1.25 var(--font-serif); margin: 36px 0 12px; }
+/* Titulares de marca: Commissioner Flared en peso regular, interletraje ceñido */
+h1, h2 { font-family: var(--font-display); font-weight: 400; letter-spacing: -.005em; text-wrap: balance; }
+h1 { font-size: clamp(38px, 5.4vw, 72px); line-height: 1.06; }
+h2 { font-size: clamp(28px, 3.4vw, 44px); line-height: 1.12; }
+/* Titulares medios y nombres de tarjeta: Commissioner Flared medio */
+h3 { font: 500 var(--text-heading)/1.25 var(--font-display); letter-spacing: -.005em; margin: 36px 0 12px; text-wrap: balance; }
+p { text-wrap: pretty; }
 
 /* Foco de teclado: anillo de 2 px en brown con 2 px de separación */
 :focus-visible { outline: 2px solid var(--brown); outline-offset: 2px; }
@@ -86,7 +94,7 @@ h3 { font: 500 25px/1.25 var(--font-serif); margin: 36px 0 12px; }
 .sectionLabel { color: var(--brown); font-size: 12px; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 18px; }
 .sectionLabel.light { color: var(--gold-light); }
 
-.lead { font: 400 23px/1.6 var(--font-serif); margin-bottom: 20px; }
+.lead { font: 400 var(--text-lead)/1.5 var(--font-sans); margin-bottom: 20px; }
 
 /* Botones */
 .actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
@@ -154,7 +162,7 @@ h3 { font: 500 25px/1.25 var(--font-serif); margin: 36px 0 12px; }
 /* Portada: velo plano de ink-dark sobre la foto (sin degradados) */
 .hero { position: relative; min-height: calc(100vh - 78px); display: flex; align-items: center; padding: 80px var(--gutter); color: var(--cream); background: linear-gradient(rgba(26, 28, 20, .66), rgba(26, 28, 20, .66)), url('/images/abraham.jpg') center/cover no-repeat; }
 .heroContent { max-width: 780px; }
-.heroText { max-width: 610px; margin: 30px 0 38px; font: 400 clamp(20px, 1.9vw, 24px)/1.6 var(--font-serif); }
+.heroText { max-width: 610px; margin: 30px 0 38px; font: 400 clamp(18px, 1.6vw, 21px)/1.5 var(--font-sans); }
 .scrollCue { position: absolute; bottom: 26px; right: clamp(24px, 6vw, 92px); display: flex; gap: var(--space-3); text-decoration: none; text-transform: uppercase; font-size: 12px; letter-spacing: .1em; }
 
 @media (max-width: 800px) {
@@ -193,7 +201,7 @@ h3 { font: 500 25px/1.25 var(--font-serif); margin: 36px 0 12px; }
 
 .projectNote { margin-top: var(--space-7); padding-top: var(--space-6); border-top: 1px solid var(--gray-light); font-size: 14px; color: var(--ink-muted); }
 .projectsCta { display: flex; align-items: center; justify-content: space-between; gap: 28px; margin-top: var(--space-7); padding-top: 28px; border-top: 1px solid var(--gray-light); }
-.projectsCta p { max-width: 560px; color: var(--ink-muted); font: 400 21px/1.55 var(--font-serif); }
+.projectsCta p { max-width: 560px; color: var(--ink-muted); font: 400 var(--text-lead)/1.5 var(--font-sans); }
 .projectsCta .button { flex-shrink: 0; }
 
 @media (max-width: 1000px) {
@@ -213,7 +221,7 @@ h3 { font: 500 25px/1.25 var(--font-serif); margin: 36px 0 12px; }
 .introGrid p + p { margin-top: var(--space-3); }
 .quotePair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 42px; max-width: 1160px; margin-top: 80px; }
 /* Citas bíblicas en cursiva, con la referencia abreviada al final */
-blockquote { margin: 0; padding-top: var(--space-6); border-top: 1px solid var(--rule); color: var(--ink); font: italic 400 26px/1.5 var(--font-serif); }
+blockquote { margin: 0; padding-top: var(--space-6); border-top: 1px solid var(--rule); color: var(--ink); font: italic 400 clamp(20px, 1.8vw, 24px)/1.45 var(--font-sans); }
 blockquote cite { display: block; margin-top: var(--space-3); color: var(--brown); font: normal 400 14px var(--font-sans); letter-spacing: .04em; }
 
 @media (max-width: 800px) {
@@ -230,10 +238,10 @@ blockquote cite { display: block; margin-top: var(--space-3); color: var(--brown
 .principleList { border-top: 1px solid var(--rule); }
 .principle { display: grid; grid-template-columns: 60px minmax(250px, 1fr) 110px; gap: var(--space-6); align-items: center; padding: var(--space-6) 0; border-bottom: 1px solid var(--rule); }
 .principle > span { color: var(--brown); font-size: 12px; font-weight: 500; letter-spacing: .1em; }
-.principle h3 { margin: 0 0 4px; font-size: clamp(25px, 2.5vw, 34px); }
+.principle h3 { margin: 0 0 4px; font-size: clamp(22px, 2.2vw, 28px); line-height: 1.2; }
 .principle p { color: var(--ink-muted); font-size: 15px; line-height: 1.55; }
 /* Sello circular: radius-round es el radio del sello en la marca */
-.principleMark { display: grid; place-items: center; width: 70px; height: 70px; padding: 7px; border: 1px solid var(--gold); border-radius: var(--radius-round); color: var(--brown); font: italic 400 14px/1.1 var(--font-serif); text-align: center; white-space: nowrap; }
+.principleMark { display: grid; place-items: center; width: 70px; height: 70px; padding: 7px; border: 1px solid var(--gold); border-radius: var(--radius-round); color: var(--brown); font: 500 13px/1.1 var(--font-display); text-align: center; white-space: nowrap; }
 
 @media (max-width: 800px) {
   .principlesIntro { grid-template-columns: 1fr; gap: 15px; }
@@ -261,14 +269,14 @@ blockquote cite { display: block; margin-top: var(--space-3); color: var(--brown
 
 /* La Sagrada Familia */
 .jose { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(340px, .75fr); gap: clamp(45px, 8vw, 120px); align-items: center; }
-.joseLead { max-width: 560px; margin-top: 22px; color: var(--ink-muted); font: 400 23px/1.6 var(--font-serif); }
+.joseLead { max-width: 560px; margin-top: 22px; color: var(--ink-muted); font: 400 var(--text-lead)/1.5 var(--font-sans); }
 .joseGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 38px; }
 .joseGrid article { padding-top: var(--space-4); border-top: 1px solid var(--rule); }
 .joseGrid h3 { margin: 0 0 var(--space-3); }
 .joseGrid p { max-width: 430px; color: var(--ink-muted); font-size: 15px; }
 .joseArtwork { position: relative; margin: 0; padding: 18px 18px 46px; background: var(--cream-light); border: 1px solid var(--gray-light); border-radius: var(--radius-sm); }
 .joseArtwork img { display: block; width: 100%; aspect-ratio: .77; object-fit: cover; }
-.joseArtwork figcaption { position: absolute; bottom: 12px; right: 19px; color: var(--brown); font: italic 400 19px var(--font-serif); letter-spacing: .05em; }
+.joseArtwork figcaption { position: absolute; bottom: 12px; right: 19px; color: var(--brown); font: italic 400 16px/1.3 var(--font-sans); }
 
 @media (max-width: 800px) {
   .jose, .joseGrid { grid-template-columns: 1fr; }
@@ -293,7 +301,7 @@ blockquote cite { display: block; margin-top: var(--space-3); color: var(--brown
 .support h2 { max-width: 640px; }
 .supportContent { max-width: 520px; }
 .supportContent p { margin-bottom: 18px; color: var(--cream); }
-.supportContent .supportLead { font: 400 23px/1.55 var(--font-serif); }
+.supportContent .supportLead { font: 400 var(--text-lead)/1.5 var(--font-sans); }
 .supportContent .actions { margin: 25px 0 22px; }
 .supportContent .supportNote { padding-top: var(--space-4); border-top: 1px solid rgba(244, 239, 228, .45); font-size: 13px; }
 
@@ -315,7 +323,7 @@ blockquote cite { display: block; margin-top: var(--space-3); color: var(--brown
 /* Página de agradecimiento por donación */
 .thanksNote { padding-block: clamp(56px, 7vw, 90px); padding-inline: var(--gutter-wide); }
 .thanksNote .lead { max-width: 640px; font-style: italic; }
-.thanksSignature { font: 500 22px/1.3 var(--font-display); letter-spacing: .15em; }
+.thanksSignature { font: 500 24px/1.2 var(--font-display); letter-spacing: -.005em; }
 .thanksSignature span { display: block; margin-top: 6px; color: var(--brown); font: 400 12px var(--font-sans); letter-spacing: .1em; text-transform: uppercase; }
 .thanksSteps { background: var(--cream-light); border-block: 1px solid var(--gray-light); }
 .thanksFollow { display: grid; grid-template-columns: minmax(280px, 1fr) minmax(300px, .9fr); gap: clamp(40px, 8vw, 120px); align-items: end; }
@@ -330,8 +338,8 @@ blockquote cite { display: block; margin-top: var(--space-3); color: var(--brown
 .pageHeader { padding: clamp(var(--space-9), 11vw, 150px) var(--gutter-wide); background: var(--ink-dark); color: var(--cream); }
 .pageHeader > * { max-width: 780px; }
 .pageHeader .sectionLabel { color: var(--gold-light); }
-.pageHeader h1 { font-size: clamp(36px, 4.6vw, 58px); }
-.pageHeaderText { margin-top: var(--space-6); max-width: 590px; color: var(--cream); font: 400 21px/1.6 var(--font-serif); }
+.pageHeader h1 { font-size: clamp(36px, 4.8vw, 60px); }
+.pageHeaderText { margin-top: var(--space-6); max-width: 590px; color: var(--cream); font: 400 var(--text-lead)/1.5 var(--font-sans); }
 
 /* Contacto */
 .contactContent { display: grid; grid-template-columns: minmax(260px, .78fr) minmax(360px, 1fr); gap: clamp(45px, 11vw, 150px); padding: clamp(var(--space-9), 11vw, 140px) var(--gutter-wide); }
@@ -401,7 +409,7 @@ blockquote cite { display: block; margin-top: var(--space-3); color: var(--brown
 .siteFooter button:hover { color: var(--gold-light); }
 .footerTop { display: grid; grid-template-columns: minmax(240px, 1.1fr) 1fr; gap: clamp(35px, 8vw, 130px); padding-bottom: 36px; }
 .footerBrand img { display: block; height: 60px; width: auto; max-width: 100%; margin-bottom: var(--space-6); }
-.footerBrand p { max-width: 420px; color: var(--cream); font: italic 400 19px/1.5 var(--font-serif); }
+.footerBrand p { max-width: 420px; color: var(--cream); font: 400 18px/1.5 var(--font-sans); }
 .footerDetails { align-self: end; line-height: 1.8; }
 .footerDetails strong { color: var(--gold-light); }
 .footerBottom { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-top: var(--space-5); border-top: 1px solid rgba(212, 176, 122, .3); color: var(--gray); }
