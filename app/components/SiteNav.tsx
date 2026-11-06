@@ -24,7 +24,7 @@ export function SiteNav() {
   return (
     <nav className={classes} aria-label="Navegación principal">
       <Link href="/" className="brand" aria-label="Providebit, inicio" onClick={close}>
-        <img src="/logo.png" alt="Providebit" />
+        <img src="/brand/providebit-horizontal-color.svg" alt="Providebit" width="2377" height="598" />
       </Link>
 
       <button

@@ -91,8 +91,8 @@ export default function Home() {
           </div>
         </div>
         <div className="quotePair">
-          <blockquote>«Dios proveerá el cordero para el holocausto, hijo mío.»<cite>Génesis 22, 8</cite></blockquote>
-          <blockquote>«Llevamos este tesoro en vasijas de barro, para que se vea que un poder tan extraordinario viene de Dios y no de nosotros.»<cite>2 Corintios 4, 7</cite></blockquote>
+          <blockquote>«Dios proveerá el cordero para el holocausto, hijo mío.»<cite>(Gn 22,8)</cite></blockquote>
+          <blockquote>«Llevamos este tesoro en vasijas de barro, para que se vea que un poder tan extraordinario viene de Dios y no de nosotros.»<cite>(2 Co 4,7)</cite></blockquote>
         </div>
       </section>
 
