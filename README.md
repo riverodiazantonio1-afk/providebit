@@ -17,8 +17,17 @@ app/
     site.ts             # Datos de la asociación (correo, NIF, dirección) y enlaces del menú
     legal.tsx           # Textos de las páginas legales
 public/                 # Imágenes y recursos estáticos (incluye CNAME con el dominio)
+  brand/                # Logos oficiales en SVG (del sistema de diseño)
+  fonts/                # Fuentes de la marca: Cormorant SC, Cormorant Garamond y DM Sans
 .github/workflows/      # Publicación automática en GitHub Pages
 ```
+
+### Sistema de diseño
+
+Colores, tipografías, espaciados y radios siguen el sistema de diseño de Providebit
+(https://claude.ai/artifact/UzEo8SLkMSLKefmbydhz2h). Los tokens están como variables
+CSS al principio de `app/globals.css`, con los mismos nombres (`--cream`, `--brown`,
+`--ink`, `--space-*`, `--radius-*`…). Usa siempre esas variables, no colores sueltos.
 
 ### Cambios habituales
 

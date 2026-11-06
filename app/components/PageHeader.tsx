@@ -1,4 +1,4 @@
-// Cabecera verde de las páginas interiores (contacto, junta directiva, textos legales).
+// Cabecera oscura de las páginas interiores (contacto, junta directiva, textos legales).
 
 type Props = { label: string; title: string; text: string };
 

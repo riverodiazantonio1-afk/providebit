@@ -9,7 +9,7 @@ export function SiteFooter() {
     <footer className="siteFooter">
       <div className="footerTop">
         <div className="footerBrand">
-          <img src="/logo-footer.png" alt="Providebit" />
+          <img src="/brand/providebit-horizontal-negativo.svg" alt="Providebit" width="2377" height="598" />
           <p>«Todo lo bueno nos pertenece»: rescatamos lo bueno de todo esfuerzo humano y lo traemos hacia Cristo.</p>
         </div>
         <p className="footerDetails">
