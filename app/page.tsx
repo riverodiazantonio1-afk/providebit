@@ -1,5 +1,6 @@
 import { ProjectCard, type Project } from "./components/ProjectCard";
 import { SectionHeading } from "./components/SectionHeading";
+import { site } from "./lib/site";
 
 const projects: Project[] = [
   {
@@ -185,7 +186,7 @@ export default function Home() {
           <p className="supportLead">Si alguna de estas iniciativas resuena en tu corazón, tu aportación puede ayudar a que dé su primer paso.</p>
           <p>También puedes contactar con nosotros para ofrecer tiempo, conocimientos, contactos o cualquier otro tipo de ayuda. Estamos aquí para escucharte.</p>
           <div className="actions">
-            <a className="button buttonLight" href="/contacto">Quiero donar <span>→</span></a>
+            <a className="button buttonLight" href={site.donationUrl}>Quiero donar <span>→</span></a>
             <a className="button buttonGhost" href="/contacto">Contactar</a>
           </div>
           <p className="supportNote">Actualmente, las aportaciones a Providebit no dan derecho a deducción fiscal.</p>
