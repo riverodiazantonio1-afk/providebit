@@ -42,7 +42,7 @@ export function SiteNav() {
         {navLinks.map((link) => (
           <Link key={link.href} href={link.href} onClick={close}>{link.label}</Link>
         ))}
-        <Link href="/contacto" className="navCta" onClick={close}>Contactar</Link>
+        <Link href="/#hacer-posible" className="navCta" onClick={close}>Donar</Link>
       </div>
     </nav>
   );

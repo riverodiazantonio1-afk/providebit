@@ -219,6 +219,9 @@ p { text-wrap: pretty; }
 .introGrid { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(42px, 9vw, 145px); align-items: start; }
 .introGrid p:not(.lead) { font-size: 16px; color: var(--ink-muted); }
 .introGrid p + p { margin-top: var(--space-3); }
+.testimonies { max-width: 1160px; margin-top: 80px; }
+.testimonies > h3 { margin-bottom: var(--space-5); }
+.testimoniesNote { margin-top: var(--space-5); color: var(--ink-muted); font-style: italic; }
 .quotePair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 42px; max-width: 1160px; margin-top: 80px; }
 /* Citas bíblicas en cursiva, con la referencia abreviada al final */
 blockquote { margin: 0; padding-top: var(--space-6); border-top: 1px solid var(--rule); color: var(--ink); font: italic 400 clamp(20px, 1.8vw, 24px)/1.45 var(--font-sans); }
@@ -349,9 +352,11 @@ blockquote cite { display: block; margin-top: var(--space-3); color: var(--brown
 .contactForm { display: grid; gap: 22px; }
 .contactForm label { display: grid; gap: var(--space-2); font-size: 13px; font-weight: 500; }
 .contactForm input,
+.contactForm select,
 .contactForm textarea { width: 100%; padding: 13px 14px; border: 1px solid var(--gray-light); border-radius: var(--radius-xs); background: var(--cream-light); color: var(--ink); font: 400 16px/1.5 var(--font-sans); }
 .contactForm textarea { resize: vertical; }
 .contactForm input:focus,
+.contactForm select:focus,
 .contactForm textarea:focus { outline: 2px solid var(--brown); outline-offset: 2px; }
 .contactForm .button { justify-self: start; margin-top: 3px; cursor: pointer; }
 .formNote { margin-top: -8px; font-size: 13px; color: var(--ink-muted); }

@@ -28,12 +28,22 @@ const projects: Project[] = [
   },
 ];
 
-const principles = [
-  { title: "La civilización del amor", text: "Cristo ha venido a traer al mundo la paz y el amor verdaderos.", mark: "Amor" },
-  { title: "La transmisión del Evangelio", text: "La fe recibida se comparte: es lo único que puede sanar el mundo.", mark: "Palabra" },
-  { title: "El poder del Espíritu Santo", text: "Él capacita y sostiene a quienes están llamados a servir.", mark: "Espíritu" },
-  { title: "Capacitar a los agentes pastorales", text: "Padres, sacerdotes, laicos y consagrados llamados a formar a otros.", mark: "Servicio" },
+const values = [
+  { title: "Confianza en la Providencia", text: "Dios proveerá: ponemos los medios y dejamos en sus manos el fruto.", mark: "Confianza" },
+  { title: "Fidelidad a la Palabra", text: "La fe recibida se comparte: es lo único que puede sanar el mundo.", mark: "Palabra" },
+  { title: "Docilidad al Espíritu Santo", text: "Él capacita y sostiene a quienes están llamados a servir.", mark: "Espíritu" },
+  { title: "Servicio sin protagonismo", text: "Como san José, ponemos nuestros talentos al servicio de una obra que no lleva nuestro nombre.", mark: "Servicio" },
+  { title: "Formación que se multiplica", text: "Padres, sacerdotes, laicos y consagrados que, formados, forman a su vez a otros.", mark: "Formar" },
   { title: "Todo lo bueno nos pertenece", text: "Rescatamos lo bueno de todo esfuerzo humano y lo traemos hacia Cristo.", mark: "Esperanza" },
+  { title: "Transparencia", text: "Rendimos cuentas de cada aportación y del destino que le damos.", mark: "Claridad" },
+];
+
+// Testimonios bíblicos de que «Dios proveerá».
+const testimonies = [
+  { title: "Abraham", ref: "Gn 22,1-14", text: "Subió al monte sin saber cómo se cumpliría la promesa, y allí Dios proveyó el cordero." },
+  { title: "La viuda de Sarepta", ref: "1 Re 17,8-16", text: "Compartió con Elías lo último que le quedaba, y no le faltaron la harina ni el aceite mientras duró la sequía." },
+  { title: "Los cinco panes y dos peces", ref: "Jn 6,1-13", text: "Un muchacho ofreció lo poco que tenía; en manos de Jesús alimentó a una multitud y aún sobraron doce cestos." },
+  { title: "Los primeros cristianos", ref: "Hch 4,32-35", text: "Llenos del Espíritu Santo, ponían sus bienes en común, y entre ellos no había ningún necesitado." },
 ];
 
 const ways = [
@@ -68,7 +78,7 @@ export default function Home() {
         <SectionHeading
           label="Curso 2026–2027"
           title="Proyectos apostólicos en desarrollo."
-          text="Cuatro iniciativas que queremos sacar adelante durante el próximo curso."
+          text="Cuatro iniciativas que queremos sacar adelante durante este curso."
         />
         <div className="projectGrid">
           {projects.map((project) => <ProjectCard key={project.title} {...project} />)}
@@ -82,14 +92,28 @@ export default function Home() {
 
       {/* La asociación */}
       <section className="section intro" id="asociacion">
-        <p className="sectionLabel">Nuestra razón de ser</p>
+        <p className="sectionLabel">Por qué nos llamamos Providebit</p>
         <div className="introGrid">
-          <h2>Conocer la Palabra, confiar en ella y ponerla por obra.</h2>
+          <h2><em lang="la">Deus providebit</em>: «Dios proveerá».</h2>
           <div>
-            <p className="lead">Providebit acoge y respalda iniciativas que ayudan a conocer a Dios, amarle y vivir de acuerdo con su Palabra.</p>
+            <p className="lead">Con esas palabras respondió Abraham a su hijo Isaac camino del monte Moria (Gn 22,8). Son nuestro nombre y también nuestra manera de trabajar.</p>
+            <p>Providebit acoge y respalda iniciativas que ayudan a conocer a Dios, amarle y vivir de acuerdo con su Palabra.</p>
             <p>Abraham confió en el Señor, obedeció a su palabra y la puso por obra. Fue padre de innumerables naciones y sigue siendo nuestro padre en la fe, extendida hoy por los cinco continentes.</p>
             <p>Creemos que el fruto pastoral verdadero nace de ese mismo camino: escuchar a Dios, conocer su Palabra, recibir de Él la fuerza y obrar en consecuencia. No buscamos ser atractivos por nosotros mismos ni perseguimos un fin económico; queremos transmitir el amor de Dios a las gentes.</p>
           </div>
+        </div>
+        <div className="testimonies">
+          <h3>Testigos de la Providencia</h3>
+          <div className="serviceGrid">
+            {testimonies.map((item) => (
+              <article className="service" key={item.title}>
+                <span>{item.ref}</span>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </article>
+            ))}
+          </div>
+          <p className="testimoniesNote">Cada aportación a Providebit es, como aquellos cinco panes, algo pequeño puesto en manos de Dios.</p>
         </div>
         <div className="quotePair">
           <blockquote>«Dios proveerá el cordero para el holocausto, hijo mío.»<cite>(Gn 22,8)</cite></blockquote>
@@ -100,12 +124,12 @@ export default function Home() {
       {/* Principios */}
       <section className="section principles">
         <div className="principlesIntro">
-          <p className="sectionLabel">Lo que nos guía</p>
+          <p className="sectionLabel">Nuestros valores</p>
           <h2>Una fe que toma forma en la cultura.</h2>
           <p>Queremos dar a otras personas oportunidades reales para conocer la tradición espiritual cristiana, al Dios Amor y todo lo que alimenta la fe.</p>
         </div>
         <div className="principleList">
-          {principles.map((principle, index) => (
+          {values.map((principle, index) => (
             <article className="principle" key={principle.title}>
               <span>{number(index)}</span>
               <div>
@@ -125,12 +149,12 @@ export default function Home() {
           <article>
             <span>Misión</span>
             <h2>Formar y acompañar</h2>
-            <p>A padres de familia, sacerdotes, laicos y consagrados para que vivan su vocación con mayor hondura y, a su vez, formen a otros.</p>
+            <p>Acogemos, sostenemos y damos cobertura a proyectos apostólicos que forman a padres de familia, sacerdotes, laicos y consagrados, para que vivan su vocación cristiana con plenitud y hondura y, a su vez, formen a otros.</p>
           </article>
           <article>
             <span>Visión</span>
-            <h2>Ser fieles a la promesa</h2>
-            <p>La transformación pertenece al Señor de la historia. Nuestra parte es obedecer a su Palabra, servir con fidelidad y confiar en que Él proveerá lo necesario.</p>
+            <h2>Una sociedad transformada por el Espíritu</h2>
+            <p>Familias y comunidades que conocen la Palabra de Dios, la viven y la transmiten. Confiamos en el poder del Espíritu Santo para transformar la sociedad actual y construir la civilización del amor; nuestra parte es obedecer a su Palabra, servir con fidelidad y confiar en que Él proveerá lo necesario.</p>
           </article>
         </div>
       </section>

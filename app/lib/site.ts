@@ -9,9 +9,10 @@ export const site = {
   address: "Calle Arriba 35, 1º B, 31430 Aoiz (Navarra), España",
 };
 
-// Enlaces del menú principal. El último se muestra destacado como botón.
+// Enlaces del menú principal. Tras ellos, el botón destacado «Donar» (ver SiteNav).
 export const navLinks = [
   { href: "/#proyectos", label: "Proyectos" },
   { href: "/#asociacion", label: "La asociación" },
   { href: "/junta-directiva", label: "Junta directiva" },
+  { href: "/contacto", label: "Contacto" },
 ];

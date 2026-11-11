@@ -7,7 +7,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://providebit.es"),
   title: "Providebit | Asociación Cultural",
-  description: "Providebit acoge, respalda y da cobertura a proyectos católicos de difusión del Evangelio.",
+  description: "Providebit acoge, sostiene y da cobertura a proyectos apostólicos que forman a padres, sacerdotes, laicos y consagrados para vivir su vocación cristiana con plenitud y hondura.",
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }, { url: "/favicon.png", type: "image/png" }],
     apple: "/favicon.png",
